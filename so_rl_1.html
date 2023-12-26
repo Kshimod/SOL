@@ -1,0 +1,161 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="MK lab" />
+    <title>Experiment</title>
+    <link href="jspsych/dist/jspsych.css" rel="stylesheet" type="text/css">
+    <style> 
+        .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            font-size: 5vh;
+        }
+        .center_upper {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            font-size: 4vh;
+            line-height: normal;
+        }
+        .outcome_pos {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            font-size: 4vh;
+            line-height: normal;
+        }
+        .left_position {
+            position: absolute;
+            top: 50%;
+            left: 30%;
+            transform: translateX(-50%) translateY(-50%)
+        }
+        .right_position {
+            position: absolute;
+            top: 50%;
+            left: 70%;
+            transform: translateX(-50%) translateY(-50%)
+        }
+        .left_point {
+            position: absolute;
+            top: 80%;
+            left: 30%;
+            transform: translateX(-50%) translateY(-50%);
+            font-size: 6vh;
+        }
+        .right_point {
+            position: absolute;
+            top: 80%;
+            left: 70%;
+            transform: translateX(-50%) translateY(-50%);
+            font-size: 6vh;
+        }
+        
+        .left_number {
+            position: absolute;
+            top: 40%;
+            left: 30%;
+            transform: translateX(-50%) translateY(-50%);
+            font-size: 12vh;
+            border: #0000ff 1px solid;
+            background:#0000ff;
+            padding:80px;
+        }
+        .right_number {
+            position: absolute;
+            top: 40%;
+            left: 70%;
+            transform: translateX(-50%) translateY(-50%);
+            font-size: 12vh;
+            border: #0000ff 1px solid;
+            background:#0000ff;
+            padding:80px;
+        }
+        .inst_text {
+            font-size: 4vh;
+            line-height: 6vh;
+            text-align: left;
+        }
+        .inst_text2 {
+            font-size: 3vh;
+        }
+        .scale_text {
+            font-size: 3vh;
+            color: #ffffff;
+            line-height: normal;
+        }
+        .block_num_pos {
+            position: absolute;
+            top: 10%;
+            left: 15%;
+            transform: translateX(-50%) translateY(-50%);
+            font-size: 4vh;
+        }
+        .event {
+            font-size: 4vh;
+            line-height: normal;
+        }
+        .prompt {
+            font-size: 4vh;
+            line-height: normal;
+        }
+        #jspsych-survey-text-next {
+            top: 70%;
+            text-align: center; 
+            font-size: 20px; 
+            height: 50px;
+            width: 100px; 
+        }
+        #input-0 {
+            height: 80px;
+            width: 140px;
+            font-size: 40px;
+        }
+        .upper_left {
+            position: absolute;
+            top: 12%;
+            left: 20%;
+            transform: translateX(-50%) translateY(-50%);
+            font-size: 3.5vh;
+            line-height: normal;
+        }
+        .jspsych-survey-text-question textarea { 
+            text-align: center; 
+            height: 4vh;
+            /*font-size: 300px; */
+        }
+        .jspsych-survey-multi-choice-text { 
+            font-size: 3vh;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="jspsych/dist/jspsych.js"></script>
+    <!-- 必要なプラグインを記述 -->
+    <body bgcolor="#000000", text="#ffffff")></body> <!--bgcolor=bagground color=black, text=white-->>
+    <script src="jspsych/dist/plugin-html-keyboard-response.js"></script>
+    <script src="jspsych/dist/plugin-html-button-response.js"></script>
+    <script src="jspsych/dist/plugin-survey-text.js"></script>
+    <script src="jspsych/dist/plugin-preload.js"></script>
+    <script src="jspsych/dist/plugin-instructions.js"></script>
+    <script src="jspsych/dist/plugin-fullscreen.js"></script>
+    <script src="jspsych/dist/plugin-survey-likert.js"></script>
+    <script src="jspsych/dist/plugin-survey-multi-choice.js"></script>
+    <script src="jstat/dist/jstat.js"></script>
+    <script src="https://unpkg.com/@jspsych-contrib/plugin-pipe"></script>
+    
+    <!-- ここまで -->
+
+    <!-- 実験ファイルを記述-->
+    <script src="so_rl_1_v4.js"></script>
+    <!--ここまで-->
+</body>
+</html>
