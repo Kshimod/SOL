@@ -1574,8 +1574,7 @@ const actual_base_rate = {
                         };
 
                         if (convert_success == 0) {// if appropriate value is still not found
-                            let temp_true_BR = [86, 87, 88, 89, 90];
-                            true_BR = temp_true_BR[Math.floor(Math.random() * temp_true_BR.length)];
+                            true_BR = 90;
                             EE = Number(true_BR) - Number(BR_estimated);
                             br_manip_bad[bad_tIdx-1] = EE;
                             convert_success = 1;
@@ -1583,8 +1582,7 @@ const actual_base_rate = {
                     };
                 } 
                 else if (bad_tIdx == 10) {// if there is no remaining value in the array
-                    let temp_true_BR = [85, 86, 87, 88, 89, 90];
-                    true_BR = temp_true_BR[Math.floor(Math.random() * temp_true_BR.length)];
+                    true_BR = 90;
                     EE = Number(true_BR) - Number(BR_estimated);
                     br_manip_bad[bad_tIdx-1] = EE;
                     convert_success = 1;
@@ -1924,12 +1922,17 @@ const end_exp2 = {
         text += "お手数ですが，ご自身のIDとともに，実験が終了したことを,";
         text += "実験実施者まで伝えるのを忘れないようにお願いいたします。<br>";
 
-        if (time == 2) {// second time
-            text += "謝礼はデータを確認し次第お渡しいたしますので，少々お待ちください。";
-            text += "長期間にわたる研究に参加していただき，誠にありがとうございました。";
+        if (time == 1) {// second time
+            text += "最後に，デブリーフィングのために，簡単なフォームに目を通して回答していただきます。<br>";
+            text += "<a href='https://docs.google.com/forms/d/e/1FAIpQLSf6n3vHU_Sbl-KUHHlt7LQ7OAILmGLbOcdioPUt3Au8DA1mZw/viewform?usp=sf_link' target='_blank'>こちらのリンク</a>";
+            text += "からフォームに飛んでください。<br>";
+            text += "念のため，フォームに回答してからこの画面を閉じてください。";
+            //text += "謝礼はデータを確認し次第お渡しいたしますので，少々お待ちください。";
+            //text += "長期間にわたる研究に参加していただき，誠にありがとうございました。";
+        } else {// first time
+            text += "それでは，escキーを押して画面を閉じてください。</p>";
         };
 
-        text += "それでは，escキーを押して画面を閉じてください。</p>";
         return text;
     },
     choices: [" "]
@@ -1937,15 +1940,7 @@ const end_exp2 = {
 
 // ======== full experiment ==========
 const tl_try = [
-    preload,
-    preload2,
-    preload3,
-    get_ID,
-    get_time,
-    age,
-    biol_sex,
-    BUT_inst_prac,
-    BUT_full
+    end_exp2
 ];
 
 const timeline = [
