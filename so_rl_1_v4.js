@@ -962,6 +962,7 @@ const phase1 = {
             data.numWin_stim = num_win[stim_idx-1];
             data.numLoss_stim = num_loss[stim_idx-1];
             data.rProb_frac = frac_prob;
+            data.expl_prob = expl_prob;
             d_idx += 1;
         };
     }
@@ -1919,8 +1920,8 @@ const end_exp2 = {
         let text;
         text = "<p class='inst_text'>転送が終了しました。<br>";
         text += "ありがとうございました。<br>";
-        text += "お手数ですが，ご自身のIDとともに，実験が終了したことを,";
-        text += "実験実施者まで伝えるのを忘れないようにお願いいたします。<br>";
+        text += "お手数ですが，<b>ご自身のIDとともに，実験が終了したことを，";
+        text += "実験実施者まで伝える</b>のを忘れないようにお願いいたします。<br>";
 
         if (time == 1) {// second time
             text += "最後に，デブリーフィングのために，簡単なフォームに目を通して回答していただきます。<br>";
@@ -1940,6 +1941,12 @@ const end_exp2 = {
 
 // ======== full experiment ==========
 const tl_try = [
+    preload,
+    preload2,
+    preload3,
+    start_FS,
+    get_ID,
+    get_time,
     end_exp2
 ];
 
@@ -1947,6 +1954,7 @@ const timeline = [
     preload,
     preload2,
     preload3,
+    start_FS,
     get_ID,
     get_time,
     age,
@@ -1963,5 +1971,5 @@ const timeline = [
 ];
 
 // start the experiment
-//jsPsych.run(timeline);
 jsPsych.run(timeline);
+//jsPsych.run(tl_try);
