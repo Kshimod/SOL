@@ -1,4 +1,5 @@
 // Pavlovian conditioning task + Belief-updating task
+// use random explicit numerical value for Pavlovian task
 // EE = initial estimate for other - actual base rate version
 
 const jsPsych = initJsPsych({
@@ -183,8 +184,8 @@ const age = {
     on_load: function() {
         let element = document.getElementById('input-0');
         element.type = 'number',
-        element.min =17,
-        element.max = 40
+        element.min =18,
+        element.max = 30
     },
     on_finish: function(data) {
         data.participantID = participantID;
@@ -815,23 +816,13 @@ let tn_in_period = tn_in_block*3; // 75
 let tn_total = tn_in_period*4; // 300
 let tIdx_decision = 1; // total trial number for decision trial
 let d_idx = 1; // trial number of decision trials (1-60)
-let bl_probs = runifn(30, 70, 5); // reward probs of five fractals in one block
-let d_cond = []; // condition for decision trials
-for (let k=1; k<8; k++) {
-    let tmp;
-    if (k == 4) { // equal probability
-        tmp = Array(12).fill(k);
-    } else {
-        tmp = Array(8).fill(k);
-    };
-    d_cond = d_cond.concat(tmp);
-};
-d_cond = jsPsych.randomization.shuffle(d_cond);
+let bl_probs = runifn(0, 100, 5); // reward probs of five fractals in one block
 let num_win = Array(60).fill(0); // number of observing wins
 let num_loss = Array(60).fill(0); // number of observing losses
 let num_obs = Array(60).fill(0); // number of observing the stimulus
 let frac_prob; // reward probability of the presented fractal stimulus
 let expl_prob; // explcit numeric reward probability
+let expl_prob_list = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 let left; // whether left stimulus is fractal (1) or not (0)
 let obs_dur;
 let dec_dur = 5000;
@@ -881,27 +872,8 @@ const phase1 = {
         else if (trial_type == "d") { // decision trial
             frac_prob = bl_probs[stim_num-1];
             // determine the explicit probability
-            if (d_cond[d_idx-1] == 1) {// frac is 10% higher
-                expl_prob = frac_prob - 10;
-            }
-            else if (d_cond[d_idx-1]==2) {// frac is 20% higher
-                expl_prob = frac_prob - 20;
-            }
-            else if (d_cond[d_idx-1]==3) {// frac is 30% higher
-                expl_prob = frac_prob - 30;
-            }
-            else if (d_cond[d_idx-1]==4) {// equal probs
-                expl_prob = frac_prob;
-            }
-            else if (d_cond[d_idx-1]==5) {// frac is 10% lower
-                expl_prob = frac_prob + 10;
-            }
-            else if (d_cond[d_idx-1]==6) {// frac is 20% lower
-                expl_prob = frac_prob + 20;
-            }
-            else if (d_cond[d_idx-1]==7) {// frac is 30% lower
-                expl_prob = frac_prob + 30;
-            };
+            expl_prob_list = jsPsych.randomization.shuffle(expl_prob_list);
+            expl_prob = expl_prob_list[0];
             // randomize the position (left or right)
             if (Math.random() < 0.5) {
                 html = `<p class='left_position'><img src=${stim}></p>`;
@@ -956,7 +928,6 @@ const phase1 = {
             data.time = time;
             data.stim_cond = stim_cond;
             data.d_trialNum = d_idx;
-            data.d_cond = d_cond[d_idx-1];
             data.presented_stim = stim_idx;
             data.selected_stim = selected_stim;
             data.numObs_stim = num_obs[stim_idx-1];
@@ -985,27 +956,8 @@ const phase1_prac = {
         else if (trial_type == "d") { // decision trial
             frac_prob = bl_probs[stim_num-1];
             // determine the explicit probability
-            if (d_cond[d_idx-1] == 1) {// frac is 10% higher
-                expl_prob = frac_prob - 10;
-            }
-            else if (d_cond[d_idx-1]==2) {// frac is 20% higher
-                expl_prob = frac_prob - 20;
-            }
-            else if (d_cond[d_idx-1]==3) {// frac is 30% higher
-                expl_prob = frac_prob - 30;
-            }
-            else if (d_cond[d_idx-1]==4) {// equal probs
-                expl_prob = frac_prob;
-            }
-            else if (d_cond[d_idx-1]==5) {// frac is 10% lower
-                expl_prob = frac_prob + 10;
-            }
-            else if (d_cond[d_idx-1]==6) {// frac is 20% lower
-                expl_prob = frac_prob + 20;
-            }
-            else if (d_cond[d_idx-1]==7) {// frac is 30% lower
-                expl_prob = frac_prob + 30;
-            };
+            expl_prob_list = jsPsych.randomization.shuffle(expl_prob_list);
+            expl_prob = expl_prob_list[0];
             // randomize the position (left or right)
             if (Math.random() < 0.5) {
                 html = `<p class='left_position'><img src=${stim}></p>`;
@@ -1182,7 +1134,7 @@ const Pav_one_period = {
                 tIdx_in_block = 1;
                 block_idx  += 1;
                 trial_list = reset_trial_list();
-                bl_probs = runifn(30, 70, 5);
+                bl_probs = runifn(0, 100, 5);
             } else {
                 tIdx_in_block += 1;
             }
@@ -1193,7 +1145,7 @@ const Pav_one_period = {
             tIdx_in_period = 1;
             tIdx_in_block = 1;
             trial_list = reset_trial_list();
-            bl_probs = runifn(30, 70, 5);
+            bl_probs = runifn(0, 100, 5);
             return false;
         };
     }
