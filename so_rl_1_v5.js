@@ -1889,7 +1889,7 @@ const end_exp2 = {
 
         return text;
     },
-    choices: [" "]
+    choices: "NO_KEYS"
 };
 
 // ======== full experiment ==========
