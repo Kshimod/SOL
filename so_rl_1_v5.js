@@ -1877,7 +1877,7 @@ const end_exp2 = {
         text += "実験実施者まで伝える</b>のを忘れないようにお願いいたします。<br>";
 
         if (time == 1) {// second time
-            text += "最後に，デブリーフィングのために，簡単なフォームに目を通して回答していただきます。<br>";
+            text += "<b>最後に，デブリーフィングのために，簡単なフォームに目を通して回答していただきます。</b><br>";
             text += "<a href='https://docs.google.com/forms/d/e/1FAIpQLSf6n3vHU_Sbl-KUHHlt7LQ7OAILmGLbOcdioPUt3Au8DA1mZw/viewform?usp=sf_link' target='_blank'>こちらに埋め込んだリンク</a>";
             text += "をクリックしてフォームを開いてください。<br>";
             text += "念のため，フォームに回答してからこの画面を閉じてください。<br>";
