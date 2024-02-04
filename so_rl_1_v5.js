@@ -1878,11 +1878,11 @@ const end_exp2 = {
 
         if (time == 1) {// second time
             text += "最後に，デブリーフィングのために，簡単なフォームに目を通して回答していただきます。<br>";
-            text += "<a href='https://docs.google.com/forms/d/e/1FAIpQLSf6n3vHU_Sbl-KUHHlt7LQ7OAILmGLbOcdioPUt3Au8DA1mZw/viewform?usp=sf_link' target='_blank'>こちらのリンク</a>";
-            text += "からフォームに飛んでください。<br>";
+            text += "<a href='https://docs.google.com/forms/d/e/1FAIpQLSf6n3vHU_Sbl-KUHHlt7LQ7OAILmGLbOcdioPUt3Au8DA1mZw/viewform?usp=sf_link' target='_blank'>こちらに埋め込んだリンク</a>";
+            text += "をクリックしてフォームを開いてください。<br>";
             text += "念のため，フォームに回答してからこの画面を閉じてください。";
             //text += "謝礼はデータを確認し次第お渡しいたしますので，少々お待ちください。";
-            //text += "長期間にわたる研究に参加していただき，誠にありがとうございました。";
+            text += "長期間にわたる研究に参加していただき，誠にありがとうございました。";
         } else {// first time
             text += "それでは，escキーを押して画面を閉じてください。</p>";
         };
