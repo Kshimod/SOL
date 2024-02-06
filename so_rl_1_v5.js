@@ -8,7 +8,8 @@ const jsPsych = initJsPsych({
         //jsPsych.data.displayData("csv")
 
         // output data in the form of csv
-        //jsPsych.data.get().localSave("csv", "data.csv")
+        let filename = `${participantID}_${time}.csv`;
+        jsPsych.data.get().localSave("csv", filename);
     }
 });
 
@@ -1875,22 +1876,30 @@ const end_exp2 = {
         text += "ありがとうございました。<br>";
         text += "お手数ですが，<b>ご自身のIDとともに，実験が終了したことを，";
         text += "実験実施者まで伝える</b>のを忘れないようにお願いいたします。<br>";
-
-        if (time == 1) {// second time
-            text += "<b>最後に，デブリーフィングのために，簡単なフォームに目を通して回答していただきます。</b><br>";
-            text += "<a href='https://docs.google.com/forms/d/e/1FAIpQLSf6n3vHU_Sbl-KUHHlt7LQ7OAILmGLbOcdioPUt3Au8DA1mZw/viewform?usp=sf_link' target='_blank'>こちらに埋め込んだリンク</a>";
-            text += "をクリックしてフォームを開いてください。<br>";
-            text += "念のため，フォームに回答してからこの画面を閉じてください。<br>";
-            //text += "謝礼はデータを確認し次第お渡しいたしますので，少々お待ちください。";
-            text += "長期間にわたる研究に参加していただき，誠にありがとうございました。";
-        } else {// first time
-            text += "それでは，escキーを押して画面を閉じてください。</p>";
+        if (time == 1){
+            text += "実験終了の連絡を受けたのち，デブリーフィング用のフォームをお送りします。<br>";
         };
+        text += "それでは，<b>スペースキーを押して，実験を終了してください（画面が真っ暗になったら終了です）。</b><br>";
+        text += "実験終了とともにcsvファイルがダウンロードされますが，それはバックアップ用のデータとなりますので，削除しないようお願いいたします。<br>";
+        text += "<b><u>データ保存のためにも，スペースキーを押すのを必ず忘れないようにしてください！！</b></u>(全画面はescキーで解除できます。)";
+
+        // if (time == 1) {// second time
+        //     text += "<b>最後に，デブリーフィングのために，簡単なフォームに目を通して回答していただきます。</b><br>";
+        //     text += "<a href='https://docs.google.com/forms/d/e/1FAIpQLSf6n3vHU_Sbl-KUHHlt7LQ7OAILmGLbOcdioPUt3Au8DA1mZw/viewform?usp=sf_link' target='_blank'>こちらに埋め込まれたリンク</a>";
+        //     text += "をクリックしてフォームを開いてください。<br>";
+        //     text += "念のため，フォームに回答してからこの画面を閉じてください。";
+        //     text += 
+        //     //text += "謝礼はデータを確認し次第お渡しいたしますので，少々お待ちください。";
+        //     //text += "長期間にわたる研究に参加していただき，誠にありがとうございました。";
+        // } else {// first time
+        //     text += "それでは，escキーを押して画面を閉じてください。</p>";
+        // };
 
         return text;
     },
-    choices: "NO_KEYS"
+    choices: [" "]
 };
+
 
 // ======== full experiment ==========
 const tl_try = [
